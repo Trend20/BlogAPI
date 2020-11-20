@@ -4,6 +4,15 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
+// initialize express
+const app = express();
+
+
+// use the middewares
+app.use(cors());
+app.use(morgan('tiny'));
+app.use(bodyParser.json());
+
 // connect to the database
 mongoose.connect('mongodb://localhost:27017/blog');
 

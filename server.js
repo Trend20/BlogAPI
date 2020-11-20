@@ -30,3 +30,29 @@ const postService = {
          return post;
     }
 }
+
+
+// CONTROLLERS
+// create postController to handle the finding and saving posts
+
+const postController = {
+    find: async(req, res, next) =>{
+        try{
+            const posts = await postService.find({...req.query});
+            res.json(posts);
+        }catch(error){
+            error.msg = 'failed to retrieve post';
+            next(error);
+        }
+    },
+
+    save: async(req, res, next) =>{
+        try{
+            const post = await postService.save(req. body);
+            res.json(post);
+        }catch(error){
+            error.msg = 'failed to create post';
+            next(error);
+        }
+    },
+};
